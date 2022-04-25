@@ -1,29 +1,56 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+import { useEffect } from 'react';
 
-const Outer = styled.div`
+const Outer = styled('div')`
     height: 100vh;
-    font-size: 4rem;
+    font-size: 3em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`;
-
-const Text = styled.div`
-    margin: 20px;
-    font-size: 1.5rem;
+    background-color: #E4734F;
     text-align: center;
 `;
 
+const Text = styled('div')`
+    margin: 40px 0;
+    font-size: 1.5rem;
+`;
+
 export default function SelfIntroduction() {
+
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const animation = () => {
+        gsap.set('.selfIntroduction', { opacity: 0, y: 20 })
+        gsap.to(".selfIntroduction", { // 動かす要素
+            scrollTrigger: {
+                trigger: ".selfIntroductionOuter",
+                start: "20% center",
+                markers: true,
+                once: true,
+            },
+            opacity: 1,
+            y: 0,
+        });
+    };
+
+    useEffect(() => {
+        animation();
+    }, []);
+
     return (
-        <Outer>
-            自己紹介
-            <Text>
-                林 政宏<br/>
-                2000/12/05生まれ<br />
-                フロントエンド開発、特にReactをメインに学んでいます。<br/>
-            </Text>
+        <Outer className='selfIntroductionOuter'>
+            <div className='selfIntroduction'>
+                自己紹介
+                <Text>
+                    林 政宏<br />
+                    2000/12/05生まれ<br />
+                    フロントエンド開発、特にReactをメインに学んでいます。<br />
+                </Text>
+            </div>
         </Outer>
     )
 }

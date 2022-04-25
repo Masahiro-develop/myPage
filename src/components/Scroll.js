@@ -1,12 +1,9 @@
 import ArrowDropDownCircleOutlinedIcon from '@mui/icons-material/ArrowDropDownCircleOutlined';
-import styled from 'styled-components';
+import { styled } from '@mui/material';
 
-const Outer = styled.div`
-font-size: 2rem;
-text-align: center;
-position: absolute;
-bottom: 50px;
-margin: auto;
+const Outer = styled('div')`
+    font-size: 2rem;
+    text-align: center;
 `;
 
 export default function Scroll() {

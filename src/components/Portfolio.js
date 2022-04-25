@@ -1,81 +1,117 @@
 import { useEffect } from 'react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/all';
-import styled from 'styled-components';
-import productDBImage from '../image/productDB-ScreenShot.png'
+import productDBImage from '../image/productDB-ScreenShot.png';
+import otaCaleImage from '../image/otaCale-ScreenShot.png';
+import { Button, styled } from '@mui/material';
 
-const Outer = styled.div`
+const Outer = styled('div')`
     min-height: 100vh;
-    padding: 200px;
-    font-size: 5rem;
+    padding: 20px;
+    font-size: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #CC4165;
 `;
 
-const Test = styled.div`
-    height: 100px;
-    width: 100px;
-    background-color: black;
-    margin: 2px;
+const Title = styled('div')`
+    margin: 20vh 0;
+    font-size: 1.5em;
+    text-align: center;
 `;
 
-const Work = styled.div`
-    font-size: 3rem;
+const Work = styled('div')`
+    max-width: 700px;
+    font-size: 1em;
     min-width: 300px;
     text-align: center;
     margin: 30px auto;
 `;
 
-const Image = styled.img`
+const Image = styled('img')`
     margin: 20px;
 `;
 
-const Text = styled.div`
-    font-size: 1.5rem;
-    text-align: left;
+const SubTitle = styled('div')`
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+`;
+
+const Text = styled('div')`
+    font-size: 0.7em;
+    text-align: center;
+`;
+
+const CustomButton = styled(Button)`
+    margin: 20px;
 `;
 
 export default function Portfolio() {
 
+    const STsetting = {
+        start: "top center",
+        markers: true,
+        once: true,
+    };
+
     gsap.registerPlugin(ScrollTrigger);
     
     const animation = () => {
-        gsap.set('.box', {opacity: 0, y: 20})
-        gsap.to(".box", { // 動かす要素
-            scrollTrigger: {
-                trigger: ".box", // この要素まできたらアニメーション開始
-                start: "center center", // ビューポートの設定
-                markers: true, // 検証用のマーカーを表示
-                once: true,
-            },
+        gsap.set(['.title', '.content1', '.content2'], { opacity: 0, y: 20 });
+
+        gsap.to(".title", {
+            scrollTrigger: {...STsetting, trigger: '.portfolioOuter'},
             opacity: 1,
             y: 0,
         });
-    }
+        gsap.to('.content1', {
+            scrollTrigger: {...STsetting, trigger: '.content1'},
+            opacity: 1,
+            y: 0,
+        });
+        gsap.to('.content2', {
+            scrollTrigger: {...STsetting, trigger: '.content2'},
+            opacity: 1,
+            y: 0,
+        });
+    };
 
     useEffect(() => {
         animation();
     }, []);
 
-    
-
     return (
-        <Outer>
-            制作してきたサービス
-            <Work>
-                productDB<br/>
-                <Image src={productDBImage} height='900' />
-                <Text>
-                    コンセプト: 誰でも使える簡単なUIの生産管理サービス<br/>
-                    制作期間: 約４ヶ月<br/>
-                    学んだ技術: Recharts、Firebase(database, hosting)
-                </Text>
+        <Outer className='portfolioOuter'>
+            <Title className='title'>制作してきたサービス</Title>
+            <Work className='content1'>
+                <div>
+                    productDB<br />
+                    <Image src={productDBImage} width='80%' />
+                </div>
+                <SubTitle>コンセプト</SubTitle>
+                <Text>誰でも使える簡単なUIの生産管理サービス</Text><br />
+                <SubTitle>制作期間</SubTitle>
+                <Text>約４ヶ月</Text><br />
+                <SubTitle>学んだ技術</SubTitle>
+                <Text>Recharts、Firebase(database, hosting)</Text>
+                <CustomButton variant='outlined' color='inherit' onClick={() => { window.open('https://productdb-ced2c.web.app/') }}>サイトへアクセス</CustomButton>
             </Work>
-            <Test className='box'>1</Test>
-            <Test className='box'>2</Test>
-            <Test className='box'>3</Test>
+            <Work className='content2'>
+                <div>
+                    OtaCale<br />
+                    <Image src={otaCaleImage} width='80%' />
+                </div>
+                <SubTitle>コンセプト</SubTitle>
+                <Text>オタク向けリアルイベント専用スケジュール管理webアプリ</Text><br />
+                <SubTitle>制作期間</SubTitle>
+                <Text>約３ヶ月</Text><br />
+                <SubTitle>学んだ技術</SubTitle>
+                <Text>FullCalendar, firebase(Authcation, Cloud Functions)</Text>
+                <CustomButton variant='outlined' color='inherit' onClick={()=>{window.open('https://ota-cale.web.app/about')}}>サイトへアクセス</CustomButton>
+            </Work>
         </Outer>
-    )
+    );
 }
