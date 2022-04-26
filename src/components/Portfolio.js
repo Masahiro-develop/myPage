@@ -109,7 +109,7 @@ export default function Portfolio() {
                 <SubTitle>制作期間</SubTitle>
                 <Text>約３ヶ月</Text><br />
                 <SubTitle>学んだ技術</SubTitle>
-                <Text>FullCalendar, firebase(Authcation, Cloud Functions)</Text>
+                <Text>FullCalendar, firebase(Authentication, Cloud Functions)</Text>
                 <CustomButton variant='outlined' color='inherit' onClick={()=>{window.open('https://ota-cale.web.app/about')}}>サイトへアクセス</CustomButton>
             </Work>
         </Outer>
