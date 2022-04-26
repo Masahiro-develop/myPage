@@ -29,7 +29,6 @@ export default function SelfIntroduction() {
             scrollTrigger: {
                 trigger: ".selfIntroductionOuter",
                 start: "20% center",
-                markers: true,
                 once: true,
             },
             opacity: 1,

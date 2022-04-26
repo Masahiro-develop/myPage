@@ -32,7 +32,7 @@ const Scroll = styled('div')`
 export default function Top(props) {
 
     const tl = gsap.timeline({
-        delay: 3.5,
+        delay: 2,
         repeat: -1,
         repeatDelay: 1,
     });
@@ -41,7 +41,7 @@ export default function Top(props) {
         gsap.set('.name', { opacity: 0, y: -200 });
         gsap.set('.scroll', { opacity: 0 });
         gsap.to('.name', { opacity: 1, duration: 1.5, ease: "elastic.out(1.5, 0.75)", y: 0 });
-        gsap.to('.scroll', { opacity: 1, delay: 2 });
+        gsap.to('.scroll', { opacity: 1, delay: 1 });
         tl.to('.scrollArrow', { delay:0.5, duration: 1, ease: "power3.out(1.7)", y: -25 })
             .to('.scrollArrow', { delay:0.5, duration: 1, ease: "bounce.out(1.7)", y: 0})
     };

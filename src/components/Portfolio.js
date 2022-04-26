@@ -53,7 +53,6 @@ export default function Portfolio() {
 
     const STsetting = {
         start: "top center",
-        markers: true,
         once: true,
     };
 
