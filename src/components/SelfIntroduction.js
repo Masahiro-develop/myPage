@@ -14,8 +14,14 @@ const Outer = styled('div')`
     text-align: center;
 `;
 
+const Inner = styled('div')`
+    padding: 20px;
+    border: #CC4165 solid 5px;
+    border-radius: 10px;
+`;
+
 const Text = styled('div')`
-    margin: 40px 0;
+    margin-top: 40px;
     font-size: 1.5rem;
 `;
 
@@ -24,8 +30,8 @@ export default function SelfIntroduction() {
     gsap.registerPlugin(ScrollTrigger);
     
     const animation = () => {
-        gsap.set('.selfIntroduction', { opacity: 0, y: 20 })
-        gsap.to(".selfIntroduction", { // 動かす要素
+        gsap.set('.selfIntroduction', { opacity: 0, y: 20 });
+        gsap.to(".selfIntroduction", {
             scrollTrigger: {
                 trigger: ".selfIntroductionOuter",
                 start: "20% center",
@@ -42,14 +48,14 @@ export default function SelfIntroduction() {
 
     return (
         <Outer className='selfIntroductionOuter'>
-            <div className='selfIntroduction'>
+            <Inner className='selfIntroduction'>
                 自己紹介
                 <Text>
                     林 政宏<br />
                     2000/12/05生まれ<br />
                     フロントエンド開発、特にReactをメインに学んでいます。<br />
                 </Text>
-            </div>
+            </Inner>
         </Outer>
     )
 }

@@ -31,6 +31,19 @@ const Scroll = styled('div')`
 
 export default function Top(props) {
 
+    function handleChangePrevent(e) {
+        e.preventDefault();
+    };
+    
+    useEffect(() => {
+        document.addEventListener("mousewheel", handleChangePrevent, { passive: false });
+        document.addEventListener("touchmove", handleChangePrevent, { passive: false });
+        setTimeout(() => {
+            document.removeEventListener("mousewheel", handleChangePrevent, { passive: false });
+            document.removeEventListener("touchmove", handleChangePrevent, { passive: false });
+        }, 3500);
+    }, []);
+
     const tl = gsap.timeline({
         delay: 2,
         repeat: -1,
@@ -40,10 +53,11 @@ export default function Top(props) {
     const animation = () => {
         gsap.set('.name', { opacity: 0, y: -200 });
         gsap.set('.scroll', { opacity: 0 });
+        gsap.set('.scrollArrow', { y: -25 });
         gsap.to('.name', { opacity: 1, duration: 1.5, ease: "elastic.out(1.5, 0.75)", y: 0 });
-        gsap.to('.scroll', { opacity: 1, delay: 1 });
-        tl.to('.scrollArrow', { delay:0.5, duration: 1, ease: "power3.out(1.7)", y: -25 })
-            .to('.scrollArrow', { delay:0.5, duration: 1, ease: "bounce.out(1.7)", y: 0})
+        gsap.to('.scroll', { opacity: 1, delay: 1.5 });
+        tl.to('.scrollArrow', { delay: 0.5, duration: 1, ease: "bounce.out(1.7)", y: 0 })
+            .to('.scrollArrow', { delay: 0.5, duration: 1, ease: "power3.out(1.7)", y: -25 })
     };
     
     useEffect(() => {

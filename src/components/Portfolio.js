@@ -32,6 +32,7 @@ const Work = styled('div')`
 
 const Image = styled('img')`
     margin: 20px;
+    box-shadow: 0 10px 25px 0 #00000080;
 `;
 
 const SubTitle = styled('div')`
@@ -104,7 +105,7 @@ export default function Portfolio() {
                     <Image src={otaCaleImage} width='80%' />
                 </div>
                 <SubTitle>コンセプト</SubTitle>
-                <Text>オタク向けリアルイベント専用スケジュール管理webアプリ</Text><br />
+                <Text>オタク向けのリアルイベント専用スケジュール管理,メール配信を行うサービス</Text><br />
                 <SubTitle>制作期間</SubTitle>
                 <Text>約３ヶ月</Text><br />
                 <SubTitle>学んだ技術</SubTitle>
