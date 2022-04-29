@@ -85,7 +85,7 @@ export default function Portfolio() {
 
     return (
         <Outer className='portfolioOuter'>
-            <Title className='title'>制作してきたサービス</Title>
+            <Title className='title'>制作実績</Title>
             <Work className='content1'>
                 <div>
                     productDB<br />

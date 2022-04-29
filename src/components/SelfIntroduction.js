@@ -16,6 +16,7 @@ const Outer = styled('div')`
 
 const Inner = styled('div')`
     padding: 20px;
+    margin: 20px;
     border: #CC4165 solid 5px;
     border-radius: 10px;
 `;
