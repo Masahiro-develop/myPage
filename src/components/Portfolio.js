@@ -37,7 +37,6 @@ const Work = styled('div')`
     min-width: 300px;
     text-align: center;
     margin: 30px auto;
-    padding: 20px;
     box-shadow: 0 10px 25px 0 #00000080;
     `;
 
